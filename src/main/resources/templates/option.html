@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Quarkus Playground</title>
+</head>
+<body>
+    <h1>Option Form</h1>
+    <p>selectedOption: {selection.name}</p>
+    <form action="/option" method="POST" name="optionForm" enctype="multipart/form-data">
+        <fieldset>
+            <label for="option">Option</label>
+            <select id="option" name="option">
+            {#for option in enum:values('org.acme.Option')}
+                <option value="{option}" {#if selection eq option}selected{/if}>{option}</option>
+            {/for}
+            </select>
+            <button type="submit">Submit</button>
+            <a href="/option">Reset</a>
+        </fieldset>
+    </form>
+</body>
+</html>
